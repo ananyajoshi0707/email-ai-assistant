@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --foreground: #1f2937;
+  --primary: #2563eb;
+  --accent: #f0f9ff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --input-bg: #f9fafb;
+  --border-color: #d1d5db;
+  --background-gradient: linear-gradient(135deg, #155dcf, #b5e468);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #f9fafb;
+    --primary: #3b82f6;
+    --accent: #1e3a8a;
+    --card-bg: rgba(30, 41, 59, 0.85);
+    --input-bg: #1e293b;
+    --border-color: #475569;
+    --background-gradient: linear-gradient(135deg, #15eb55, #0ce38d);
+  }
+}
+
+body {
+  background: var(--background-gradient);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Main container */
+main {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+}
+
+/* Inputs */
+textarea,
+select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+}
+
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Button */
+button {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+button:hover::after {
+  left: 100%;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background-color: #1d4ed8;
+}
+
+/* Email Response Styling */
+.generated-email {
+  background-color: var(--accent);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  white-space: pre-wrap;
+  animation: fadeIn 0.5s ease-in;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
